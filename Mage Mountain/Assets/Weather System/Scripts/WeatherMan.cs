@@ -4,22 +4,37 @@ using UnityEngine;
 
 public class WeatherMan : MonoBehaviour
 {
+    //maincameratransform 
+    //snow object
+    //rain object
+    //wind object
+
     int mode;
+    float timer;
     // Start is called before the first frame update
     void Start()
     {
-        
+        //getmaincameratransfrom
+        //get rain
+        //get wind
+        //get snow
+
+        timer = 30f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        /*
-         *Sunny = 0
-         *Rainy = 1
-         *Snowy = 2
-         *Windy = 3
-         */
+        timer -= Time.deltaTime;
+        //Debug.Log("Current weather mode:"+mode);
+
+        //change weather
+        if (timer <= 0)
+        {
+            timer = 30f;
+            mode = Random.Range(0,4);
+        }
+        
         if (mode == 0)
         {
             //Sunny Mode
