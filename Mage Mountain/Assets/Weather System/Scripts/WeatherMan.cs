@@ -44,6 +44,8 @@ public class WeatherMan : MonoBehaviour
             mode = Random.Range(0,4);
             rain.SetActive(false);
             snow.SetActive(false);
+            Debug.Log("Current weather mode:" + mode);
+
         }
            
         if (mode == 0)
@@ -53,11 +55,15 @@ public class WeatherMan : MonoBehaviour
         {
             //rainy Mode
             rain.SetActive(true);
+            Debug.Log("it should be raining ");
+            rain.transform.position = new Vector3(camTran.position.x, rain.transform.position.y, camTran.position.z);
         }else if (mode == 2)
         {
             //Snowy Mode
-        
-        }else if (mode == 3)
+            snow.SetActive(true);
+            snow.transform.position = new Vector3(camTran.position.x, snow.transform.position.y, camTran.position.z);
+        }
+        else if (mode == 3)
         {
             //Windy mode
         }
