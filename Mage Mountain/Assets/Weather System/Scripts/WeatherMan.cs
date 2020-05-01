@@ -5,9 +5,12 @@ using UnityEngine;
 public class WeatherMan : MonoBehaviour
 {
     //maincameratransform 
+    Transform camTran;
     //snow object
+    GameObject snow;
     //rain object
-    //wind object
+    GameObject rain;
+    //wind object ???
 
     int mode;
     float timer;
@@ -15,9 +18,15 @@ public class WeatherMan : MonoBehaviour
     void Start()
     {
         //getmaincameratransfrom
+        camTran = Camera.main.transform;
         //get rain
+        rain = GameObject.Find("Rain");
+        rain.SetActive(false);
         //get wind
         //get snow
+        snow = GameObject.Find("Snow");
+        snow.SetActive(false);
+
 
         timer = 30f;
     }
@@ -33,14 +42,17 @@ public class WeatherMan : MonoBehaviour
         {
             timer = 30f;
             mode = Random.Range(0,4);
+            rain.SetActive(false);
+            snow.SetActive(false);
         }
-        
+           
         if (mode == 0)
         {
             //Sunny Mode
         }else if (mode == 1)
         {
             //rainy Mode
+            rain.SetActive(true);
         }else if (mode == 2)
         {
             //Snowy Mode
