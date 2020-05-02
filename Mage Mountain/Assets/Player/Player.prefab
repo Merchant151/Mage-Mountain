@@ -205,8 +205,10 @@ MonoBehaviour:
   projectilePrefab: {fileID: 8380293107347742713, guid: 6bd1d1aab935a244b8f3ce1beffef02c,
     type: 3}
   projectileSpeed: 40
-  cannonBallPrefab: {fileID: 5706465796473424743, guid: 298486dfaf5b5254f85f4ddf6c18dbef,
-    type: 3}
+  spells:
+  - {fileID: 5706465796473424743, guid: 298486dfaf5b5254f85f4ddf6c18dbef, type: 3}
+  - {fileID: 6138113824969037761, guid: dc94a83521520054e89a0c18abbf1e04, type: 3}
+  - {fileID: 1032752399353135480, guid: a0e03b36573d7714db5d989f812711a1, type: 3}
   spawnPoint: {fileID: 2969425435873960242}
   power: 75
 --- !u!1 &8745380749309006998

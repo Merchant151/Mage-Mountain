@@ -17,7 +17,8 @@ public class PlayerMovement : MonoBehaviour
     public float projectileSpeed = 40;
 
 
-    public GameObject cannonBallPrefab;
+    //public GameObject cannonBallPrefab;
+    public GameObject[] spells;
     public GameObject spawnPoint;
     public float power;
     float rotateSpeed = 20;
@@ -56,8 +57,8 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))  
         {
 
-            
-            shoot(power);
+            //moved shoot function to CastingController
+            //shoot(power, 1);
             /*
             //int i = Random.Range(0, bulletPrefab.Length); for random shooting snowmen
 
@@ -77,9 +78,9 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    public Rigidbody shoot(float power)
+    public Rigidbody shoot(float power, int spell)
     {
-        GameObject g = Instantiate(cannonBallPrefab, spawnPoint.transform.position, transform.rotation) as GameObject;
+        GameObject g = Instantiate(spells[spell], spawnPoint.transform.position, transform.rotation) as GameObject;
         Rigidbody body = g.GetComponent<Rigidbody>();
         body.AddForce(transform.forward.normalized * power, ForceMode.Impulse);
         return body;

@@ -13,12 +13,23 @@ public class CastingController : MonoBehaviour
 
     bool canCast;
 
+    PlayerMovement shootScript;
+
+    int selectedSpell;
+    Image back1, back2, back3;
+
     // Start is called before the first frame update
     void Start()
     {
         orb = transform.Find("Orb").gameObject;
         mpT = GameObject.Find("MPFront").GetComponent<RawImage>();
         cdT = GameObject.Find("CooldownFront").GetComponent<RawImage>();
+
+        shootScript = transform.root.GetComponent<PlayerMovement>();
+        selectedSpell = 0;
+        back1 = GameObject.Find("Select1").GetComponent<Image>();
+        back2 = GameObject.Find("Select2").GetComponent<Image>();
+        back3 = GameObject.Find("Select3").GetComponent<Image>();
 
         cost = -40;
         cooldown = 100;
@@ -49,13 +60,52 @@ public class CastingController : MonoBehaviour
                 //set the cooldown meter to 0
                 cdT.GetComponent<RectTransform>().offsetMax =
                     new Vector2(cdT.GetComponent<RectTransform>().offsetMax.x, -200);
+
+                //shoot
+                shootScript.shoot(shootScript.power, selectedSpell);
             }
+        }
+        if (Input.GetButtonDown("Fire2"))
+        {
+            //cycle spells
+            if (selectedSpell != 2)
+            {
+                selectedSpell++;
+            }
+            else
+            {
+                selectedSpell = 0;
+            }
+            //function for updating ui
+            ShowSelected(selectedSpell);
         }
 
         /*if (canCast)
         {
             Debug.Log("Can Cast");
         }*/
+    }
+
+    void ShowSelected(int selected)
+    {
+        if (selected == 0)
+        {
+            back1.enabled = true;
+            back2.enabled = false;
+            back3.enabled = false;
+        }
+        else if (selected == 1)
+        {
+            back1.enabled = false;
+            back2.enabled = true;
+            back3.enabled = false;
+        }
+        else if (selected == 2)
+        {
+            back1.enabled = false;
+            back2.enabled = false;
+            back3.enabled = true;
+        }
     }
 
     void Regen()
