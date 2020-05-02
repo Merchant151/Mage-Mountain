@@ -6,6 +6,15 @@ TagManager:
   tags:
   - Ground
   - ground
+  - wp1
+  - wp2
+  - wp3
+  - wp4
+  - wp5
+  - wp7
+  - wp8
+  - wp9
+  - wp6
   layers:
   - Default
   - TransparentFX
