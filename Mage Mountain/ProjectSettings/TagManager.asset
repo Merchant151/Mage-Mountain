@@ -15,6 +15,9 @@ TagManager:
   - wp8
   - wp9
   - wp6
+  - fire
+  - ice
+  - lightning
   layers:
   - Default
   - TransparentFX

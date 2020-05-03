@@ -82,6 +82,8 @@ public class PlayerMovement : MonoBehaviour
         GameObject g = Instantiate(cannonBallPrefab, spawnPoint.transform.position, transform.rotation) as GameObject;
         Rigidbody body = g.GetComponent<Rigidbody>();
         body.AddForce(transform.forward.normalized * power, ForceMode.Impulse);
+        Destroy(g, 2.5f);
+        
         return body;
     }
 

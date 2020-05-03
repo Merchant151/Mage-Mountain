@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4304532397508629808}
   m_Layer: 0
   m_Name: Fireball
-  m_TagString: Untagged
+  m_TagString: fire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -183,7 +183,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 19800002, guid: 9565cde8c7698420aa10544579cb6f3d, type: 3}
       propertyPath: looping
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 19800002, guid: 9565cde8c7698420aa10544579cb6f3d, type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
