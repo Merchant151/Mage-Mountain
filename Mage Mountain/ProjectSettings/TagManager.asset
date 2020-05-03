@@ -3,7 +3,21 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Ground
+  - ground
+  - wp1
+  - wp2
+  - wp3
+  - wp4
+  - wp5
+  - wp7
+  - wp8
+  - wp9
+  - wp6
+  - fire
+  - ice
+  - lightning
   layers:
   - Default
   - TransparentFX
@@ -14,7 +28,7 @@ TagManager:
   - 
   - 
   - PostProcessing
-  - 
+  - Ground
   - 
   - 
   - 
