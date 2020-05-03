@@ -11,8 +11,9 @@ public class WeatherMan : MonoBehaviour
     //rain object
     GameObject rain;
     //wind object ???
+    GameObject wind;
 
-    int mode;
+    public int mode;
     float timer;
     // Start is called before the first frame update
     void Start()
@@ -23,6 +24,8 @@ public class WeatherMan : MonoBehaviour
         rain = GameObject.Find("Rain");
         rain.SetActive(false);
         //get wind
+        wind = GameObject.Find("Wind");
+        wind.SetActive(false);
         //get snow
         snow = GameObject.Find("Snow");
         snow.SetActive(false);
@@ -44,6 +47,7 @@ public class WeatherMan : MonoBehaviour
             mode = Random.Range(0,4);
             rain.SetActive(false);
             snow.SetActive(false);
+            wind.SetActive(false);
             Debug.Log("Current weather mode:" + mode);
 
         }
@@ -55,7 +59,7 @@ public class WeatherMan : MonoBehaviour
         {
             //rainy Mode
             rain.SetActive(true);
-            Debug.Log("it should be raining ");
+            //Debug.Log("it should be raining ");
             rain.transform.position = new Vector3(camTran.position.x, rain.transform.position.y, camTran.position.z);
         }else if (mode == 2)
         {
@@ -66,6 +70,9 @@ public class WeatherMan : MonoBehaviour
         else if (mode == 3)
         {
             //Windy mode
+            wind.SetActive(true);
+            snow.transform.position = new Vector3(camTran.position.x, snow.transform.position.y, camTran.position.z);
+
         }
         
     }
