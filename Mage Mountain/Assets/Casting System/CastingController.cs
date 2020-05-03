@@ -125,7 +125,7 @@ public class CastingController : MonoBehaviour
 
     IEnumerator Cooldown()
     {
-        for (float i = cooldown; i > -cooldown; i -= 1)
+        for (float i = cooldown; i > -cooldown; i -= 1.5f)
         {
             //Debug.Log(i);
             //increase the meter again
