@@ -9,6 +9,7 @@ public class EnemyController : MonoBehaviour
  
     public float speed;
 
+    private int weather;
 
     bool changeDirection;
     NavMeshAgent myAgent;
@@ -46,7 +47,8 @@ public class EnemyController : MonoBehaviour
         playerPos = GameObject.Find("Player").GetComponent<Transform>();
         InvokeRepeating("shoot", 2.0f, 4f);
         deathEffect = GameObject.Find("DeathParticle").GetComponent<ParticleSystem>();
-       
+
+        weather = 0;
     }
 
     // Update is called once per frame
@@ -76,24 +78,55 @@ public class EnemyController : MonoBehaviour
 
             deathEffect.Play();
         }
-
+        weather = GameObject.Find("Player").GetComponent<WeatherMan>().getMode();
+        //Debug.Log("enemy sees mode: " + weather);
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        int modf;
+        int modi;
+        int modl;
+        switch(weather)
+        {
+
+            case 1://rain
+                modf = -5;
+                modi = 0;
+                modl = 10;
+                break;
+            case 2://snow
+                modf = 0;
+                modi = 10;
+                modl = -5;
+                break;
+            case 3://wind
+                modf = -5;
+                modi = 10;
+                modl = 0;
+                break;
+
+            default://sunny
+                modf = 10;
+                modi = -5;
+                modl = 0;
+                break;                
+        }
+        //Debug.Log("modifyer vars " + modf + " " + modi + " " + modl);
+
         //Enemy Taking Damage
         if(other.tag == "fire")
         {
-            health -= 10;
+            health -= 10 + modf;
             Debug.Log("Damage taken");
         }
         else if(other.tag == "ice")
         {
-            health -= 10;
+            health -= 10 + modi;
         }
         else if(other.tag == "lightning")
         {
-            health -= 10;
+            health -= 10 + modl;
         }
 
        

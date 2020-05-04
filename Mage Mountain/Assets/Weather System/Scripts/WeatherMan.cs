@@ -60,20 +60,24 @@ public class WeatherMan : MonoBehaviour
             //rainy Mode
             rain.SetActive(true);
             //Debug.Log("it should be raining ");
-            rain.transform.position = new Vector3(camTran.position.x, rain.transform.position.y, camTran.position.z);
+            rain.transform.position = new Vector3(camTran.position.x, camTran.position.y + 5, camTran.position.z);
         }else if (mode == 2)
         {
             //Snowy Mode
             snow.SetActive(true);
-            snow.transform.position = new Vector3(camTran.position.x, snow.transform.position.y, camTran.position.z);
+            snow.transform.position = new Vector3(camTran.position.x, camTran.position.y+5, camTran.position.z);
         }
         else if (mode == 3)
         {
             //Windy mode
             wind.SetActive(true);
-            snow.transform.position = new Vector3(camTran.position.x, snow.transform.position.y, camTran.position.z);
+            wind.transform.position = new Vector3(camTran.position.x, camTran.position.y + 5, camTran.position.z);
 
         }
         
+    }
+    public int getMode()
+    {
+        return mode;
     }
 }
