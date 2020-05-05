@@ -18,6 +18,7 @@ TagManager:
   - fire
   - ice
   - lightning
+  - EP
   layers:
   - Default
   - TransparentFX

@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     public float jumpHeight = 3f;
     public GameObject projectilePrefab;
     public float projectileSpeed = 40;
+    public float health = 100;
 
 
     //public GameObject cannonBallPrefab;
@@ -87,5 +88,13 @@ public class PlayerMovement : MonoBehaviour
         return body;
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "EP")
+        {
+            health -= 10;
+
+        }
+    }
 
 }

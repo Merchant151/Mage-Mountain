@@ -8,25 +8,42 @@ public class CastingController : MonoBehaviour
     GameObject orb;
     RawImage mpT;
     RawImage cdT;
+    RawImage eHP, pHP;
 
     float cost, regenRate, cooldown;
 
     bool canCast;
 
     PlayerMovement shootScript;
+    EnemyController enemyC;
+    float enemyHP, playerHP;
 
     int selectedSpell;
     Image back1, back2, back3;
 
+    AudioSource aSource;
+    public AudioClip ice, fire, lightning;
+
     // Start is called before the first frame update
     void Start()
     {
+
+        aSource = GetComponent<AudioSource>();
+
         orb = transform.Find("Orb").gameObject;
         mpT = GameObject.Find("MPFront").GetComponent<RawImage>();
         cdT = GameObject.Find("CooldownFront").GetComponent<RawImage>();
 
+        eHP = GameObject.Find("EnemyHPFront").GetComponent<RawImage>();
+        pHP = GameObject.Find("PlayerHPFront").GetComponent<RawImage>();
+
         shootScript = transform.root.GetComponent<PlayerMovement>();
         selectedSpell = 0;
+
+        enemyC = GameObject.Find("Enemy").GetComponent<EnemyController>();
+        enemyHP = enemyC.health;
+        playerHP = shootScript.health;
+
         back1 = GameObject.Find("Select1").GetComponent<Image>();
         back2 = GameObject.Find("Select2").GetComponent<Image>();
         back3 = GameObject.Find("Select3").GetComponent<Image>();
@@ -34,15 +51,25 @@ public class CastingController : MonoBehaviour
         cost = -40;
         cooldown = 100;
         canCast = true;
-        regenRate = 1;
+        regenRate = 2;
 
-        InvokeRepeating("Regen", 2, regenRate);
+        InvokeRepeating("Regen", .1f, regenRate);
         orb.GetComponent<Renderer>().material.color = new Color(1, .5f, .2f, 1); //this orange
     }
 
     // Update is called once per frame
     void Update()
     {
+        //update enemy health - does not look right currently
+        enemyHP = enemyC.health;
+        eHP.GetComponent<RectTransform>().offsetMax =
+            new Vector2(eHP.rectTransform.offsetMax.x, enemyHP);
+
+        //update player health - same issue as above
+        playerHP = shootScript.health;
+        pHP.GetComponent<RectTransform>().offsetMax =
+            new Vector2(pHP.rectTransform.offsetMax.x, playerHP);
+
         if (Input.GetButtonDown("Fire1") && canCast)
         {
             //change color of staff orb. need to move later
@@ -64,6 +91,18 @@ public class CastingController : MonoBehaviour
 
                 //shoot
                 shootScript.shoot(shootScript.power, selectedSpell);
+                if (selectedSpell == 0)
+                {
+                    aSource.PlayOneShot(fire);
+                }
+                else if (selectedSpell == 1)
+                {
+                    aSource.PlayOneShot(ice);
+                }
+                else if(selectedSpell == 2)
+                {
+                    aSource.PlayOneShot(fire);
+                }
             }
         }
         if (Input.GetButtonDown("Fire2"))

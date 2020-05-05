@@ -13,7 +13,7 @@ public class EnemyController : MonoBehaviour
 
     bool changeDirection;
     NavMeshAgent myAgent;
-    float health = 100;
+    public float health = 100;
     Transform playerPos;
     public float power = 10;
     public GameObject projectilePrefab;
@@ -73,7 +73,7 @@ public class EnemyController : MonoBehaviour
 
         if (health <= 0)
         {
-          ;
+          
             StartCoroutine(startDeath());
 
             deathEffect.Play();
