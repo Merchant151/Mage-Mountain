@@ -269,7 +269,7 @@ public class EnemyController : MonoBehaviour
         }
         else if (other.tag == "wp5")
         {
-            behindCover = false;
+            behindCover = true;
             StartCoroutine(StopMove());
             changeDirection = true;
             switch (waypointLocs)
@@ -480,6 +480,7 @@ public class EnemyController : MonoBehaviour
             GameObject g = Instantiate(projectilePrefab, spawnPoint.transform.position, transform.rotation) as GameObject;
             Rigidbody body = g.GetComponent<Rigidbody>();
             body.AddForce(transform.forward.normalized * power, ForceMode.Impulse);
+            Destroy(g, 2.5f);
         }
      
     }

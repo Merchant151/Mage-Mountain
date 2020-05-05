@@ -31,7 +31,7 @@ public class WeatherMan : MonoBehaviour
         snow.SetActive(false);
 
 
-        timer = 30f;
+        timer = 15f;
     }
 
     // Update is called once per frame
